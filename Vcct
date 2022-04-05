@@ -1,0 +1,16 @@
+
+1	#include "fe.h"
+2	#include "crypto_int64.h"
+3	
+4	/*
+5	h = f * g
+6	Can overlap h with f or g.
+7	
+8	Preconditions:
+…	
+33	With tighter constraints on inputs can squeeze carries into int32.
+34	*/
+35	
+36	void fe_mul(fe h,const fe f,const fe g)
+37	{
+38	  crypto_int32 f0 = f[0];
